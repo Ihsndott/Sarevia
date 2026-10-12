@@ -1,6 +1,6 @@
 import heroimg from "../assets/heroshop.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faArrowRight, faShoppingBag ,faSeedling, faWandMagicSparkles, faGem, faPalette,faStar,faListUl,faTableCells,faSearch, faFilter,faChevronDown, faChevronRight, faChevronLeft} from "@fortawesome/free-solid-svg-icons"
+import {faArrowRight, faShoppingBag ,faSeedling, faWandMagicSparkles, faGem, faPalette,faStar,faListUl,faTableCells,faSearch, faFilter,faChevronDown, faChevronRight, faChevronLeft,faBars,faXmark} from "@fortawesome/free-solid-svg-icons"
 import line from "../assets/underline.png"
 import { useState,useEffect } from "react"
 import ProductCard from "../components/ProductCard"
@@ -18,6 +18,9 @@ function Shop(){
 
     //filter products by using radio buttons
     const [category,setCategory] = useState("All");
+
+    //open a filter sidebar
+    const[filterOpen,setFilterOpen] = useState(false);
 
 
     useEffect(()=>{
@@ -81,45 +84,177 @@ function Shop(){
                                 <p className="text-[#8F0628] md:text-3xl font-bold mt-8 mr-8 md:mr-0 lg:mr-0"  style={{ fontFamily: "'Cormorant Garamond', serif" }}>Shop By Category</p>
                                 <img src={line} alt="decorative line" className="w-[180px] md:w-[300px] lg:w-[300px] absolute z-50 top-[260px] md:top-[400px] lg:top-[660px] mr-8 md:mr-0 lg:mr-0"  />
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 lg:gap-6 mt-12 ml-22  pb-4">
+                            <div className="flex   grid grid-cols-5 gap-[200px] overflow-x-auto md:grid-cols-5  md:gap-6 mx-4 md:ml-2  lg:ml-22  pb-4 mt-12">
                                 {/* category-All */}
-                                <div className="group relative  w-40 h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
+                                <div className="group relative shrink-0 w-32 h-32 md:w-30 lg:w-40  md:h-30 lg:h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
                                      <FontAwesomeIcon icon={faShoppingBag} className="text-4xl mt-12  text-[#55031A] group-hover:text-white/80 trnsition-duration-300" /> 
-                                    <p className="text-[#7A2020] mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>All Sarees</p>
+                                    <p className="text-[#7A2020] md:mt-2 lg:mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>All Sarees</p>
                                 </div>
 
                                  {/* category-Cotton */}
-                                <div className="group relative  w-40 h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
+                                <div className="group relative shrink-0 w-32 h-32 md:w-30 lg:w-40 md:h-30 lg:h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
                                      <FontAwesomeIcon icon={faSeedling} className="text-4xl mt-12  text-[#55031A] group-hover:text-white/80 trnsition-duration-300" /> 
-                                    <p className="text-[#7A2020] mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Cotton</p>
+                                    <p className="text-[#7A2020] md:mt-2 lg:mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Cotton</p>
                                 </div>
 
                                  {/* category-Nylon */}
-                                <div className="group relative  w-40 h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
+                                <div className="group relative shrink-0 w-32 h-32 md:w-30 lg:w-40  md:h-30 lg:h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
                                      <FontAwesomeIcon icon={faWandMagicSparkles} className="text-4xl mt-12  text-[#55031A] group-hover:text-white/80 trnsition-duration-300" /> 
-                                    <p className="text-[#7A2020] mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Nylon</p>
+                                    <p className="text-[#7A2020] md:mt-2 lg:mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Nylon</p>
                                 </div>
 
                                  {/* category-Silk */}
-                                <div className="group relative  w-40 h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
+                                <div className="group relative shrink-0 w-32 h-32 md:w-30 lg:w-40  md:h-30 lg:h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
                                      <FontAwesomeIcon icon={faGem} className="text-4xl mt-12  text-[#55031A] group-hover:text-white/80 trnsition-duration-300" /> 
-                                    <p className="text-[#7A2020] mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Silk</p>
+                                    <p className="text-[#7A2020] md:mt-2 lg:mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Silk</p>
                                 </div>
 
                                  {/* category-Handloom */}
-                                <div className="group relative  w-40 h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
+                                <div className="group relative  shrink-0 w-32 h-32  md:w-30 lg:w-40  md:h-30 lg:h-36 bg-[#F9E5B8] border border-[#C9953E] rounded-t-[60px] flex flex-col items-center pb-4 hover:bg-[#55031A] transition-duration-300 active:scale-95">
                                      <FontAwesomeIcon icon={faPalette} className="text-4xl mt-12  text-[#55031A] group-hover:text-white/80 trnsition-duration-300" /> 
-                                    <p className="text-[#7A2020] mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Handloom</p>
+                                    <p className="text-[#7A2020] md:mt-2 lg:mt-4 text-base font-bold group-hover:text-white/80 trnsition-duration-300" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Handloom</p>
                                 </div>
 
                             </div>
-                    </div>    
+                    </div>  
 
-     {/* products container         */}
+{/* ##################### */}  
+  {/* filter  sidebar for tablet and mobile phones */}
+
+            {/* filter button to open the sidebar */}
+                <div className="lg:hidden flex justify-end w-full mt-6 pr-4">
+                    <button type="button" onClick={()=>setFilterOpen(true)} className=" flex items-center gap-2 text-[#55031A]"><FontAwesomeIcon icon={faFilter}/> Filter Sarees </button>
+                </div>
+            
+            {/* blur the page when sidebar is open */}
+                {filterOpen  && (
+                    <div className="lg:hidden fixed inset-0 z-[60] bg-black/50" onClick={()=>setFilterOpen(false)}/>
+
+                 )}
+
+            {/* setup the transition of sidebar */}
+                <div className={`lg:hidden fixed top-0 left-0 z-70 h-full w-72 max-w-[85vw] overflow-y-auto p-5 shadow-xl transition-transform duration-300 bg-white ${filterOpen ? "translate-x-0" : " -translate-x-full"}`}>
+                    
+                    {/* close button- faxmark */}
+                     <div className="flex justify-end">
+                          <button type="button" onClick={()=> setFilterOpen(false)} className="text-xl text-[#55031A]">  <FontAwesomeIcon icon={faXmark} /> </button>
+ 
+                      </div>
+                            {/* filter by */}
+                               
+                                <div className="flex flex-row items-center mt-4 ml-2 ">
+                                    <FontAwesomeIcon icon={faFilter} className=" text-lg text-[#55031A]  "/>
+                                    <h1 className="text-2xl font-bold text-[#55031A] ml-2 ">Filter</h1>
+                                </div>
+
+                                <hr className="border-[#C9953E]/60 border-1 mx-4 my-4 w-[210px]"/>
+                                     
+                            {/* Categories options */}
+                                    <div>
+                                        <p className="text-2xl font-bold text-[#55031A] ml-4 mt-2"  style={{ fontFamily: "'Cormorant Garamond', serif" }}>Categories</p>
+
+                                        <div className="ml-4 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <label className="text-[#8F0628] flex items-center gap-2 ">
+                                                <input type="radio" name="categorymobile" value="All" checked={category==="All"} onChange={()=>{setCategory("All");setCurrentPage(1)}}  className="accent-[#55031A]"  /> All Sarees
+                                            </label>
+                                        </div>
+
+                                        <div className="ml-4 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="categorymobile" value="Cotton"  checked={category==="Cotton"} onChange={()=>{setCategory("Cotton");setCurrentPage(1)}}  className="accent-[#55031A] " /> Cotton
+                                            </label>
+                                        </div>
+
+                                        <div className="ml-4 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="categorymobile" value="Nylon"  checked={category==="Nylon"} onChange={()=>{setCategory("Nylon");setCurrentPage(1)}}  className="accent-[#55031A] " /> Nylon
+                                            </label>
+                                        </div>
+
+                                        <div className="ml-4 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="categorymobile" value="Silk"  checked={category==="Silk"} onChange={()=>{setCategory("Silk");setCurrentPage(1)}}  className="accent-[#55031A] " /> Silk
+                                            </label>
+                                        </div>
+
+                                        <div className="ml-4 mt-2" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="categorymobile" value="Handloom"  checked={category==="Handloom"} onChange={()=>{setCategory("Handloom");setCurrentPage(1)}}  className="accent-[#55031A] " /> Handloom
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <hr className="border-[#C9953E]/60 border-1 mx-4 my-4 w-[210px]"/>
+
+                            {/* Price Range */}
+                                            
+                                    <div>
+                                        <h1 className="text-2xl font-bold text-[#55031A] ml-4 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Price Range</h1>
+                                        <input type="range" min="0" max="30000" defaultValue="30000" className="w-[200px] accent-[#8F0628] ml-4 mt-2" />
+                                        <div className="flex flex-row justify-between text-[#8F0628] ml-4 mr-8">
+                                            <span>0</span>
+                                            <span>30K</span>
+                                        </div>
+                                    </div>
+
+                                    <hr className="border-[#C9953E]/60 border-1 mx-4 my-4 w-[210px]"/>           
+
+                            {/* Rating */}
+
+                                    <div>
+                                    <p className="text-2xl font-bold text-[#55031A] ml-4 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Rating</p>
+                                    <div className="flex flex-col gap-2">
+                                    <label className="ml-4 text-[#8F0628] ">
+                                    <input type="checkbox" name="rating" value="4" className="accent-[#55031A] w-4 h-4 " /> 
+                                    <FontAwesomeIcon icon={faStar} className="ml-2 text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 mr-2"/> 
+                                    & UP
+                                    </label>
+
+                                    <label className="ml-4 text-[#8F0628] ">
+                                    <input type="checkbox" name="rating" value="4" className="accent-[#55031A] w-4 h-4 " /> 
+                                    <FontAwesomeIcon icon={faStar} className="ml-2 text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A]  mt-3 mr-2"/> 
+                                    & UP
+                                    </label>
+
+                                    <label className="ml-4 text-[#8F0628] ">
+                                    <input type="checkbox" name="rating" value="4" className="accent-[#55031A] w-4 h-4 " /> 
+                                    <FontAwesomeIcon icon={faStar} className="ml-2 text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A]  mt-3 mr-2"/> 
+                                    & UP
+                                    </label>
+
+                                    <label className="ml-4 text-[#8F0628] ">
+                                    <input type="checkbox" name="rating" value="4" className="accent-[#55031A] w-4 h-4 " /> 
+                                    <FontAwesomeIcon icon={faStar} className="ml-2 text-lg text-[#8F0628]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A]  mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A] mt-3 "/> <FontAwesomeIcon icon={faStar} className=" text-lg text-[#D9B45A]  mt-3 mr-2"/> 
+                                    & UP
+                                    </label>
+                                    </div>
+                                    </div> 
+                                    <hr className="border-[#C9953E]/60 border-1 mx-4 my-4 w-[210px]"/>  
+
+                            {/* Stock Status          */}
+
+                                    <div>
+                                    <p className="text-xl font-bold text-[#55031A] ml-4 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Stock Status</p>
+                                        <div className="ml-4 mt-2">
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="stockStatus" value="instock" className="accent-[#55031A] " style={{ fontFamily: "'Montserrat', sans-serif" }} /> In Stock
+                                            </label>
+                                        </div>
+
+                                        <div className="ml-4 mt-2">
+                                            <label className="text-[#8F0628] flex items-center gap-2">
+                                                <input type="radio" name="stockStatus" value="outofstock" className="accent-[#55031A] " style={{ fontFamily: "'Montserrat', sans-serif" }}/>Out of Stock
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+    {/* ##################### */}  
+
+     {/* products container  for laptop       */}
                                     
                 <div className="bg-transparent min-h-screen  pb-6  border border-[#C9953E]/60 mx-2 md:mx-7 rounded-xl mt-8 mb-2">
                                     
-                            <div className="flex flex-row gap-2 md:gap-4 justify-between ml-2 items-center mr-2">
+                            <div className="hidden lg:block flex flex-row gap-2 md:gap-4 justify-between ml-2 items-center mr-2">
                             
                              {/* featured */}
                                         <div className="hidden md:block" >
@@ -132,7 +267,7 @@ function Shop(){
                                         
                             <div className="flex flex-row gap-4 ml-2">
                             {/* filter by */}
-                                <div className="bg-transparent border border-[#C9953E]/60 w-[250px]   mt-6 rounded-xl ">
+                                <div className="hidden lg:block bg-transparent border border-[#C9953E]/60 w-[250px]   mt-6 rounded-xl ">
                                 <div className="flex flex-row items-center mt-4 ml-2 ">
                                     <FontAwesomeIcon icon={faFilter} className=" text-lg text-[#55031A]  "/>
                                     <h1 className="text-2xl font-bold text-[#55031A] ml-2 ">Filter</h1>
@@ -242,7 +377,7 @@ function Shop(){
 
                              {/* Display the Sarees from mongoDB */}
                         
-                             <div className="bg-transparent  grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-16 justify-items-center mt-6 mx-12">
+                             <div className="bg-transparent  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-16 justify-items-center mt-6 mx-12">
                                 {products.length >0 ?
                                         (currentProducts.map((product)=>(
                                             <ProductCard

@@ -77,28 +77,28 @@ function Home(){
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12 mx-10 md:mx-20 lg:mx-20  pb-4">
                         {/* category-1 */}
                         <div>
-                          <img src={cotton} alt="beauty image" className=" w-[250px] h-[380px]  object-cover rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
+                          <img src="/images/cotton1.webp" alt="cotton image" className=" w-[250px] h-[380px]  object-cover rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
                          <p className="text-[#8F0628] md:text-xl font-semibold ml-28 md:ml-12 lg:ml-25 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>COTTON</p>
                         
                         </div>
 
                         {/* category-2 */}
                         <div >
-                         <img src={nylon} alt="beauty image" className=" w-[250px] h-[380px]  object-cover   rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
+                         <img src="/images/nylon2.webp" alt="nylon image" className=" w-[250px] h-[380px]  object-cover   rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
                          <p className="text-[#8F0628] md:text-xl font-semibold ml-30 md:ml-15 lg:ml-25 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>NYLON</p>
                          
                         </div>
 
                         {/* category-3 */}
                         <div>
-                         <img src={silk} alt="beauty image" className=" w-[250px] h-[380px]  object-cover rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
+                         <img src="/images/silk2.webp" alt="silk image" className=" w-[250px] h-[380px]  object-cover rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
                          <p className="text-[#8F0628] md:text-xl font-semibold ml-33 md:ml-17 lg:ml-30 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>SILK</p>
                         
                         </div>
 
                         {/* category-4 */}
                         <div >
-                         <img src={handloom} alt="beauty image" className=" w-[250px] h-[380px]  object-cover  rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
+                         <img src="/images/handloom2.webp" alt="handloom image" className=" w-[250px] h-[380px]  object-cover  rounded-3xl ml-6 text-center  border-2 border-[#8F0628]"/>
                          <p className="text-[#8F0628] md:text-xl font-semibold ml-28 md:ml-10 lg:ml-25 mt-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>HANDLOOM</p>
                          
                         </div>

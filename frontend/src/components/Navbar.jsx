@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import logo from "../assets/logo.png"
 
 
-const NavlinkStyle = ({isActive}) => `text-md md:text-md lg:text-2xl   font-semibold transition active:scale-95  hover:text-[#8F0628] ${ isActive? "text-[#8F0628] underline decoration-2 underline-offset-8 " : "text-[#55031A]" }`
+const NavlinkStyle = ({isActive}) => `text-md md:text-md lg:text-2xl   font-semibold transition active:scale-95  hover:text-[#8F0628] ${ isActive? " text-white/80  md:text-[#8F0628] lg:text-[#8F0628] underline decoration-2 underline-offset-8 " : "text-white/60 md:text-[#55031A] lg:text-[#55031A]" }`
 
 
 function Navbar(){
@@ -49,26 +49,26 @@ function Navbar(){
 
 {/* <hr className="text-[#26352D]/40 "/> */}
                 {/* <!--Mobile-menu--> */}
-                <div  className="md:hidden fixed bottom-0 left-0 right-0 z-50">
-                        <div className="flex flex-row gap-6 justify-center items-center backdrop-blur-lg  bg-white/30 border-t border-white/40">
+                <div  className="md:hidden fixed bottom-4 left-0 right-0 z-50 ">
+                        <div className="flex flex-row gap-6 justify-center items-center  backdrop-blur-lg  bg-[#55031A] border-2 border-white/90 py-2 rounded-full shadow-lg">
                             <div className="flex flex-row gap-6">
                                 <div className="flex flex-col ">
-                                    <FontAwesomeIcon icon={faHouse} className="text-md ml-4 mt-1 text-[#8F0628] "/>
+                                    <FontAwesomeIcon icon={faHouse} className="text-md ml-4 mt-1 text-white/80 "/>
                                     <NavLink to="/" className={NavlinkStyle} >Home</NavLink>
                                 </div>
 
                                  <div className="flex flex-col ">
-                                     <FontAwesomeIcon icon={faBagShopping} className="text-md ml-3 mt-1 text-[#8F0628] "/>
+                                     <FontAwesomeIcon icon={faBagShopping} className="text-md ml-3 mt-1 text-white/80 "/>
                                     <NavLink to="/Shop" className={NavlinkStyle} >Shop</NavLink>
                                 </div>    
 
                                  <div className="flex flex-col ">  
-                                     <FontAwesomeIcon icon={faCircleInfo} className="text-md ml-5 mt-1 text-[#8F0628] "/>  
+                                     <FontAwesomeIcon icon={faCircleInfo} className="text-md ml-5 mt-1 text-white/80 "/>  
                                     <NavLink to="/About" className={NavlinkStyle} >About Us</NavLink>
                                 </div>
 
                                  <div className="flex flex-col ">  
-                                     <FontAwesomeIcon icon={faPhone} className="text-md ml-4 mt-1 text-[#8F0628] "/>
+                                     <FontAwesomeIcon icon={faPhone} className="text-md ml-4 mt-1 text-white/80 "/>
                                     <NavLink to="/Contact" className={NavlinkStyle} >Contact</NavLink>
                                 </div>  
                                 

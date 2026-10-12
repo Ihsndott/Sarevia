@@ -107,9 +107,9 @@ function decreaseqty(id){
         <>
         <div>
         <div className="flex flex-row text-center justify-center items-center">
-        <h1 className="text-2xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] mr-4 ">Sarevia | </h1>
-        <h1 className="text-2xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] ">Your Cart |</h1>
-        <h1 className="text-2xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] ml-4 ">Saree Collection</h1>
+        <h1 className="text-xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] mr-4 ">Sarevia | </h1>
+        <h1 className="text-xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] ">Your Cart |</h1>
+        <h1 className="text-xl md:text-4xl font-bold mt-8  text-center  text-[#8F0628] ml-4 ">Saree Collection</h1>
         </div>
         <h4 className="md:text-xl font-semibold text-center text-[#55031A] mt-3">Review your selected sarees and complete your order with ease.<br/> Discover timeless elegance, beautiful fabrics, and styles carefully selected for every occasion.</h4>
        </div>
@@ -123,11 +123,11 @@ function decreaseqty(id){
     <button onClick={ClearAll} className="text-white bg-red-700 rounded-2xl px-4 py-2 font-semibold mr-2 md:mr-0" > Clear All</button>
 </div>
 
-<div className="flex flex-col md:flex md:flex-row gap-4 justify-between mb-10">
+<div className="flex flex-col lg:flex lg:flex-row gap-6 justify-between mb-10">
  <div className="flex flex-col gap-4 ml-4 md:ml-12">
       {cartitems.map((item)=> (
         
-        <div key={item._id} className="flex flex-row items-center justify-between gap-4  rounded-xl border border-[#C9953E]/60 py-2 bg-[[#F9E5B8] w-[350px] md:w-[850px] h-[200px] p-4">
+        <div key={item._id} className="flex flex-row items-center justify-between gap-4  rounded-xl border border-[#C9953E]/60 py-2  w-[350px] md:w-[700px] lg:w-[850px] h-[200px] p-4">
         <div className="flex flex-row items-center gap-4  border-gray-500 py-4">
             <img src={item.image} alt="image" className="bg-white/80 rounded w-32 h-32 object-cover"/>
             <div className= "md:ml-4">
@@ -155,7 +155,7 @@ function decreaseqty(id){
 
  {/* Summary of shopping */}
 
-<div id="summary"className="w-[350px] md:w-[400px] h-fit   rounded-xl bg-[#FFE3AD]/20 border border-[#26352D]/40 ml-4 md:ml-0  md:mr-20 mb-6">
+<div id="summary"className="w-[350px] md:w-[700px] lg:w-[400px] h-fit   rounded-xl bg-[#FFE3AD]/20 border border-[#26352D]/40 ml-4 md:ml-12 lg:ml-0  md:mr-20 mb-6">
      <p className="text-[#55031A] font-bold p-4 text-xl">Order Summary</p>
      <div className="flex flex-row justify-between mx-6 ">
      <p className="text-[#8F0628]">Subtotal</p>
@@ -176,11 +176,11 @@ function decreaseqty(id){
      </div>
       <hr className="border-[#26352D]/40 mx-4"/>
       <div>
-        <button onClick={handleCheckout} className="bg-[#8F0628] rounded-full text-white font-semibold flex items-center px-12 py-4 mt-4 ml-20 transition duration-300 active:scale-95">Proceed to Checkout</button>
-        <button className="text-[#8F0628] flex items-center px-12 py-4 mt-2 ml-20 transition duration-300 active:scale-95"> ← Continue Shopping</button>
+        <button onClick={handleCheckout} className="bg-[#8F0628] rounded-full text-white font-semibold flex items-center px-12 py-4 mt-4 md:mt-12 lg:mt-4 ml-12 md:ml-60 lg:ml-20 transition duration-300 active:scale-95">Proceed to Checkout</button>
+        <button className="text-[#8F0628] flex items-center px-12 py-4 mt-4 md:mt-6 lg:mt-4 ml-12 md:ml-60 lg:ml-20 transition duration-300 active:scale-95"> ← Continue Shopping</button>
       </div>
 
-       <div className="bg-transparent border border-[#26352D]/40  w-[300px] rounded-xl m-6 p-4 flex flex-col gap-2  ">
+       <div className="bg-transparent border border-[#26352D]/40  w-[300px] rounded-xl m-6 md:ml-55 lg:m-6 p-4 flex flex-col gap-2  ">
         <div >
           <p className="flex gap-3 items-center text-[#8F0628]"><FontAwesomeIcon icon={faLock} className="text-[#55031A] " />Secure Checkout </p> 
         </div>
