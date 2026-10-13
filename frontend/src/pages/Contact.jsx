@@ -2,8 +2,65 @@ import hero from "../assets/heroshop.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faClock, faLocation, faLocationDot, faMessage, faPhone} from "@fortawesome/free-solid-svg-icons"
 import line from "../assets/underline.png"
+import { useState } from "react"
 
 function Contact(){
+
+    const [formData , setFormData] = useState({
+        name:"",
+        email:"",
+        subject:"",
+        message:""
+    });
+    
+    const [loading,setLoading] = useState(false);
+
+    const [status , setStatus] = useState("")
+
+//function to hanlde message
+    const handleMessage = (event) =>{
+        setFormData({
+            ...formData,
+            [event.target.name]:event.target.value
+        });
+    };
+
+//function to submit the message    
+
+    const submit = async (event) =>{
+        event.preventDefault();
+        setStatus("");
+        setLoading(true)
+    try{
+        const response = await fetch ("http://localhost:5000/api/email", {
+        method:"POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(formData)
+
+     });
+        const data = await response.json();
+        if(!response.ok){
+           throw new Error (data.message || "Failed to send message")
+        }
+
+        setStatus("Message sent successfully..!")
+        setFormData({
+            name:"",
+            email:"",
+            subject:"",
+            message:""
+        });
+
+    } catch(error){
+        console.log(error);
+        setStatus("Failed to send message. Please,Try again.")
+
+    }finally {
+        setLoading(false)
+    }
+} 
     return(
         <>
         <div>
@@ -83,17 +140,24 @@ function Contact(){
            <div className=" md:ml-[30px] lg:ml-[60px]">
             <h1 className="text-xl font-bold text-[#8F0628]" style={{ fontFamily: "'Playfair Display', serif" }}>Send Us a Message</h1>
             <img src={line} alt="decorative line" className="w-[200px]"/>
+            <form onSubmit={submit}>
             <div>
                 <div className="flex flex-col md:flex-row lg:flex-row gap-6 md:gap-10 lg:gap-10">
-                    <input type="text" name="name" id="name" placeholder="Name*" className="w-[200px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
-                    <input type="email" name="email" id="email" placeholder="Email*" className="w-[200px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
+                    <input type="text" name="name" id="name" placeholder="Name*" value={formData.name} onChange={handleMessage} className="w-[200px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
+                    <input type="email" name="email" id="email" placeholder="Email*" value={formData.email} onChange={handleMessage} className="w-[200px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
                 </div>
                 <div className="flex flex-col gap-6 mt-6">
-                    <input type="text" name="subject" id="subject" placeholder="Subject*"  className="w-[310px] md:w-[440px] lg:w-[440px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
-                    <input type="text" name="message" id="message" placeholder="Message*" className="w-[310px] md:w-[440px] lg:w-[440px] h-[140px] border border-[#D9B45A]/60 rounded  text-xs pl-2 text-[#8F0628]"/>
+                    <input type="text" name="subject" id="subject" placeholder="Subject*" value={formData.subject} onChange={handleMessage}  className="w-[310px] md:w-[440px] lg:w-[440px] border border-[#D9B45A]/60 rounded py-2 text-xs pl-2 text-[#8F0628]"/>
+                    <textarea type="text" name="message" id="message" placeholder="Message*" value={formData.message} onChange={handleMessage} className="resize-none w-[310px] md:w-[440px] lg:w-[440px] h-[140px] border border-[#D9B45A]/60 rounded  text-xs pl-2 text-[#8F0628]"/>
                 </div>
             </div>
-            <button className="bg-[#8F0628] text-white font-semibold px-2 md:pl-4 md:pr-4  md:py-2 mb-4 lg:py-2 rounded md:rounded  text-xs md:text-xs mt-4 active:scale-95 " style={{ fontFamily: "'Montserrat', sans-serif" }}>Send Message</button>
+            <button type="submit" disabled={loading} className="bg-[#8F0628] text-white font-semibold px-2 md:pl-4 md:pr-4  md:py-2 mb-4 lg:py-2 rounded md:rounded  text-xs md:text-xs mt-4 active:scale-95 " style={{ fontFamily: "'Montserrat', sans-serif" }}>{loading ? "sending message....!" : "Send Message"}</button>
+            
+    {/* //message for customers using status */}
+            {status && (
+                <p className="text-sm mb-4 text-[#8F0628]" role="status">{status}</p>
+            )}
+            </form>
             </div>
     </div>
         </>

@@ -10,6 +10,9 @@ const productRoutes = require("../backend/src/routes/product.routes");
 //import checkout payment
 const paymentRoutes = require("./src/routes/payment.routes");
 
+//import nodemailer
+const receiveEmailRoutes = require("./src/routes/email.routes");
+
 const app = express();
 
 app.use(cors());
@@ -19,6 +22,7 @@ app.use(express.json());
 //routes
 app.use("/api/products",productRoutes);
 app.use("/api/payment",paymentRoutes);
+app.use("/api/email",receiveEmailRoutes);
 
 connectDB();
 
