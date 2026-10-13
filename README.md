@@ -1,54 +1,55 @@
-#Sarevia – Premium Saree Shop
+Sarevia – Premium Saree Shop
 
-Sarevia is a full-stack e-commerce website designed to provide an elegant online shopping experience for saree lovers. Customers can explore premium saree collections, filter products, manage their shopping cart, and make payments online.
+Sarevia is a full-stack e-commerce website developed to provide an elegant and user-friendly online shopping experience for saree lovers. Customers can explore premium saree collections, filter products by category, manage their shopping cart, and complete online payments through Stripe Checkout.
 
 Features
 
-- Premium and elegant user interface
-- Browse Cotton, Nylon, Silk, and Handloom sarees
-- filter products by category
-- Add products to the shopping cart
-- Update product quantities and remove items
-- Store and retrieve product data using MongoDB
-- Online payment integration with Stripe Checkout
-- Home, Shop, About Us, Contact, and Add to Cart pages
+Elegant and responsive user interface
+
+Browse sarees by category: Cotton, Nylon, Silk, and Handloom
+
+Filter products by category
+
+View product details and prices
+
+Add products to the shopping cart
+
+Update product quantities and remove items from the cart
+
+Store and retrieve product data using MongoDB
+
+Secure online payment processing through Stripe Checkout
+
+Contact form with email functionality using Nodemailer
+
+Dedicated Home, Shop, About Us, Contact, and Add to Cart pages
+
+Responsive layouts for mobile, tablet, and desktop screens
 
 Technologies Used
 
-- Frontend: React, Vite, Tailwind CSS
-- Backend: Node.js, Express.js
-- Database: MongoDB
-- Payment Gateway: Stripe
-- Icons: Font Awesome
+Frontend: React, Vite, Tailwind CSS
 
-Installation and Setup
+Backend: Node.js, Express.js
 
-1. Clone the Repository
+Database: MongoDB
 
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-```
+Payment Gateway: Stripe
 
-2. Set Up the Frontend
+Email Service: Nodemailer
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+Icons: Font Awesome
 
-3. Set Up the Backend
+Version Control: Git and GitHub
 
-Open another terminal and navigate to the backend folder:
+Project Structure
 
-```bash
-cd backend
-npm install
-npm run dev
-```
-
-Configure your environment variables in the appropriate `.env` file before running the application.
+Sarevia/
+├── frontend/     # React frontend application
+├── backend/      # Express backend and API
+├── .gitignore
+└── README.md
 
 Project Goal
 
-The goal of Sarevia is to combine traditional saree shopping with a modern online experience using full-stack web development technologies.
+The goal of Sarevia is to combine the beauty of traditional saree shopping with the convenience of modern e-commerce. The project demonstrates full-stack web development by integrating a responsive React frontend, a Node.js and Express backend, MongoDB for product data management, Stripe for online payments, and Nodemailer for contact form emails.
