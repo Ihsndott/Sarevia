@@ -31,9 +31,11 @@ function Navbar(){
                 {/*icon*/}
                 <div className=" cursor-pointer flex">
                     {/* User icon */}
+                     <NavLink to="/Login" >
                     <div>
                        <FontAwesomeIcon icon={faUser} className="text-xl md:text-2xl text-[#8F0628] mr-2 mt-4 md:mt-2 lg:mt-3 "/> 
                     </div>
+                    </NavLink>
 
                     {/* Add to cart icon */}
                     <NavLink to="/Addtocart" >
